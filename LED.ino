@@ -4,13 +4,13 @@
 #include <ESP8266_Lib.h>
 #include <BlynkSimpleShieldEsp8266.h>
 
-char auth[] = "usDk7mSVLg_gugfGavOyugs5zLS5QY6A";
+char auth[] = "lNiQNz128N_DDN6Eub4zfvK8Qvi574iO"; // token led 
 
-char ssid[] = "oppof11pro";
-char pass[] = "sttcr2001";
+char ssid[] = "AAA";
+char pass[] = "123456789";
 
 #include <SoftwareSerial.h>
-SoftwareSerial EspSerial(2, 3); // RX, TX
+SoftwareSerial EspSerial(2, 3); //ต่อขา  RX, TX
 
 #define ESP8266_BAUD 9600
 
@@ -18,12 +18,14 @@ ESP8266 wifi(&EspSerial);
 
 void setup()
 {
+  
+  
   // Debug console
   Serial.begin(9600);
 
   // Set ESP8266 baud rate
   EspSerial.begin(ESP8266_BAUD);
-  delay(10);
+  delay(100);
 
   Blynk.begin(auth, wifi, ssid, pass);
 }
