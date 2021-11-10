@@ -54,16 +54,16 @@ void left()
 void progress()
 {
  digitalWrite(RightMotorDir, HIGH);
- digitalWrite(LeftMotorDir, LOW);
- digitalWrite(RightMotorSpeed, HIGH);
+ digitalWrite(LeftMotorDir, HIGH); //ทิศทาง
+ digitalWrite(RightMotorSpeed, LOW); 
  digitalWrite(LeftMotorSpeed, LOW);
 }
 
 void recede()
 {
  digitalWrite(RightMotorDir, LOW);
- digitalWrite(LeftMotorDir, HIGH);
- digitalWrite(RightMotorSpeed, LOW);
+ digitalWrite(LeftMotorDir, LOW);
+ digitalWrite(RightMotorSpeed, HIGH);
  digitalWrite(LeftMotorSpeed, HIGH);
 }
 
