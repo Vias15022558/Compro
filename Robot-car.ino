@@ -2,10 +2,10 @@
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 
-#define RightMotorSpeed 5 // D1 <-> IN1
-#define RightMotorDir 0  // D3 <-> IN2
-#define LeftMotorSpeed 4  // D2 <-> IN3
-#define LeftMotorDir 2  // D4 <-> IN4
+#define RightMotorSpeed 5 // D1 ต่อ IN1
+#define RightMotorDir 0  // D3 ต่อ IN2
+#define LeftMotorSpeed 4  // D2 ต่อ IN3
+#define LeftMotorDir 2  // D4 ต่อ IN4
 
 char auth[] = "mhBFRpBT8QF_8KVO_x-2P4KKb14ZIjGO"; 
 char ssid[] = "AAA";
@@ -35,22 +35,6 @@ void halt()
  digitalWrite(LeftMotorSpeed, HIGH);
 }
 
-void forward()
-{
- digitalWrite(RightMotorDir, HIGH);
- digitalWrite(LeftMotorDir, LOW);
- digitalWrite(RightMotorSpeed, HIGH);
- digitalWrite(LeftMotorSpeed, LOW);
-}
-
-void reverse()
-{
- digitalWrite(RightMotorDir, LOW);
- digitalWrite(LeftMotorDir, HIGH);
- digitalWrite(RightMotorSpeed, LOW);
- digitalWrite(LeftMotorSpeed, HIGH);
-}
-
 void right()
 {
  digitalWrite(RightMotorDir, LOW);
@@ -67,10 +51,28 @@ void left()
  digitalWrite(LeftMotorSpeed, HIGH);
 }
 
+void progress()
+{
+ digitalWrite(RightMotorDir, HIGH);
+ digitalWrite(LeftMotorDir, LOW);
+ digitalWrite(RightMotorSpeed, HIGH);
+ digitalWrite(LeftMotorSpeed, LOW);
+}
+
+void recede()
+{
+ digitalWrite(RightMotorDir, LOW);
+ digitalWrite(LeftMotorDir, HIGH);
+ digitalWrite(RightMotorSpeed, LOW);
+ digitalWrite(LeftMotorSpeed, HIGH);
+}
+
+
+
 BLYNK_WRITE(V0)
 {
  if (param[0])
- forward();
+ progress();
  else
  halt();
 }
@@ -78,7 +80,7 @@ BLYNK_WRITE(V0)
 BLYNK_WRITE(V1)
 {
  if (param[0])
- reverse();
+ recede();
  else
  halt();
 }
